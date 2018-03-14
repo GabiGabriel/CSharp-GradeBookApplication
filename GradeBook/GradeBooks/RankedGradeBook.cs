@@ -9,7 +9,7 @@ namespace GradeBook.GradeBooks
     public class RankedGradeBook : BaseGradeBook
     {
         public string Name { get; set; }
-        public RankedGradeBook(string name) : base(name)
+        public RankedGradeBook(string name, bool IsWeight) : base(name, IsWeight)
         {
             this.Name = name;
             Type = GradeBookType.Ranked;
