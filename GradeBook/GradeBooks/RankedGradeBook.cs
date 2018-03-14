@@ -16,13 +16,18 @@ namespace GradeBook.GradeBooks
         }
         public override char GetLetterGrade(double averageGrade)
         {
-            if (Students.Count < 5)
+            if(Students.Count <5)
                 throw new InvalidOperationException();
+            var threshold = (int)Math.Ceiling(Students[0].AverageGrade * 0.2);
+            var grades = Students.OrderByDescending(e => e.AverageGrade).Select(x => x.AverageGrade).ToList();
 
-
-           
+            if (grades[threshold] - 1 <= averageGrade)
+                return 'A';
+            else if (grades[threshold * 2] - 1 <= averageGrade)
+                return 'B';
+            
             return 'F';
         }
-
+       
     }
 }
