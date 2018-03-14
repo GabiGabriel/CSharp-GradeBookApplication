@@ -18,7 +18,7 @@ namespace GradeBook.GradeBooks
         {
             if(Students.Count <5)
                 throw new InvalidOperationException();
-            var threshold = (int)Math.Ceiling(Students[0].AverageGrade * 0.2);
+            var threshold = (int)Math.Ceiling(Students.Count * 0.2);
             var grades = Students.OrderByDescending(e => e.AverageGrade).Select(x => x.AverageGrade).ToList();
 
             if (grades[threshold - 1] <= averageGrade)
